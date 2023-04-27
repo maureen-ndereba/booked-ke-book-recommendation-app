@@ -67,7 +67,7 @@ button {
 }
 
 
-/* Styling the container for the list of books */
+/* Style the container for the list of books */
 .books-container {
     display: flex; 
     overflow-x: scroll; 
@@ -79,7 +79,7 @@ html {
     overflow-x: hidden;
 }
 
-/* Removing scrollbar space */
+/* Remove scrollbar space */
 ::-webkit-scrollbar {
     width: 0;  
     background: transparent;  
@@ -87,7 +87,7 @@ html {
 
 
 
-  /* Styling for each individual book category */
+  /* Style each individual book category */
   .book {
     display: flex; 
     flex-direction: column; 
@@ -96,13 +96,13 @@ html {
     width: 30%; 
   }
   
-  /* Styling the book image */
+  /* Style the book image */
   .book img {
     width: 120px; 
     height: 200px; 
   }
   
-  /* Styling the book title */
+  /* Style the book title */
   .book p {
     margin-top: 10px; 
     font-size: 12px; 
@@ -115,6 +115,7 @@ html {
     padding: 10px; 
     flex-direction: row;
   }
+
  /*Disappearing the Search Results */
   .ghost {
     visibility: collapse;
@@ -129,7 +130,7 @@ html {
     width: 100%;
   }
 
-   /*Styling the Footer*/
+   /*Footer*/
   footer {
     background-color: #232F3E;
     color: #fff;
@@ -149,3 +150,15 @@ footer nav ul li {
     margin-right: 100px;
 }
 
+#popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

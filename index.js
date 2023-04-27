@@ -1,4 +1,4 @@
-//Defining DOM elements
+//Define DOM elements
 const searchForm = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const bookList = document.getElementById('book-list');
@@ -8,6 +8,8 @@ const romanceDiv = document.getElementById('romance-books');
 const humorDiv = document.getElementById('humor-books');
 const literatureDiv = document.getElementById('literature-books');
 const searchDiv = document.getElementById('search-div');
+const mainBody = document.getElementById('maincontainer');
+
 
 
 
@@ -16,18 +18,18 @@ const searchDiv = document.getElementById('search-div');
 searchForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Getting user input from search input field
+    // Get user input from search input field
     const searchTerm = searchInput.value;
 
-    // Clearing previous search results
+    // Clear previous search results
     bookList.innerHTML = '';
 
-    // Calling Open Library API with search term
+    // Call Open Library API with search term
     const apiUrl = `https://openlibrary.org/search.json?q=${searchTerm}`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    // Displaying search results
+    // Display search results
     if (data.numFound > 0) {
         data.docs.forEach(book => {
             const title = book.title_suggest || '';
@@ -60,12 +62,12 @@ window.onload = function () {
  
 async function loadFictionBooks(){
 
-    // Calling Open Library API with subject term and additional query parameters 
+    // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fiction.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    // Displaying search results
+    // Display search results
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
@@ -89,12 +91,12 @@ async function loadFictionBooks(){
 
 async function loadFashionBooks(){
 
-    // Calling Open Library API with subject term and additional query parameters 
+    // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fashion.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
 
-    // Displaying search results
+    // Display search results
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
@@ -124,7 +126,7 @@ async function loadFashionBooks(){
     const response = await fetch(apiUrl);
     const data = await response.json();
   
-    // Displaying search results
+    // Display search results
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
@@ -148,12 +150,12 @@ async function loadFashionBooks(){
   
 
   async function loadHumorBooks() {
-    // Calling Open Library API with subject term and additional query parameters 
+    // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/humor.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
   
-    // Displaying search results
+    // Display search results
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
@@ -178,17 +180,17 @@ async function loadFashionBooks(){
 
 
   async function loadLiteratureBooks() {
-    // Calling Open Library API with subject term and additional query parameters 
+    // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/literature.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
   
-    // Displaying search results
+    // Display search results
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
-        const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-  
+        const author = book.author_name ? book.author_name[0] : '';  
+        const publishedYear = book.first_publish_year;
         const bookElement = document.createElement('div');
         bookElement.classList.add('book');
 
@@ -196,11 +198,10 @@ async function loadFashionBooks(){
         img.src = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
         img.alt = title;
 
-        //adding event listener
+        //add event listener
         img.addEventListener('click', function() {
-            alert('You clicked the image!');
             //add pop-up UI
-
+            showBookDetails(title, author, publishedYear, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
           });
 
         bookElement.appendChild(img);
@@ -219,3 +220,49 @@ async function loadFashionBooks(){
   };
 
  
+  function showBookDetails(title, author, publishedYear, imageUrl) {
+    // Create the pop-up container
+
+    const popupContainer = document.createElement("div");
+    popupContainer.classList.add("popup-container");
+  
+    // Create the content div to hold the book details and image
+    const content = document.createElement("div");
+    content.classList.add("content");
+  
+    // Create the book title element
+    const bookTitle = document.createElement("h3");
+    bookTitle.innerText = title;
+  
+    // Create the book author element
+    const bookAuthor = document.createElement("p");
+    bookAuthor.innerText = `Author: ${author}`;
+  
+    // Create the book published year element
+    const bookPublishedYear = document.createElement("p");
+    bookPublishedYear.innerText = `Published Year: ${publishedYear}`;
+  
+    // Create the book image element
+    const bookImage = document.createElement("img");
+    bookImage.src = imageUrl;
+  
+    // Append the book details and image elements to the content div
+    content.appendChild(bookTitle);
+    content.appendChild(bookAuthor);
+    content.appendChild(bookPublishedYear);
+    content.appendChild(bookImage);
+  
+    // Create the cancel button
+    const cancelButton = document.createElement("button");
+    cancelButton.innerText = "Cancel";
+    cancelButton.addEventListener("click", () => {
+      popupContainer.remove();
+    });
+  
+    // Append the content div and cancel button to the pop-up container
+    popupContainer.appendChild(content);
+    popupContainer.appendChild(cancelButton);
+  
+    // Append the pop-up container to the document body
+    mainBody.appendChild(popupContainer);
+  }
