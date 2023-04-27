@@ -5,9 +5,9 @@ body {
 }
 
 header {
-    background-color: #232F3E;
+    background-color: #62ba9e;
     color: #fff;
-    padding: 20px;
+    padding: 40px;
 }
 
 .logo h1 {
@@ -133,7 +133,7 @@ html {
 
 /*Footer*/
 footer {
-    background-color: #232F3E;
+    background-color: #62ba9e;
     color: #fff;
     padding: 20px;
     align-content: center;
@@ -141,7 +141,7 @@ footer {
 
 footer nav ul {
     margin: 0;
-    padding: 50px;
+    padding: 10px;
     list-style-type: none;
 }
 
