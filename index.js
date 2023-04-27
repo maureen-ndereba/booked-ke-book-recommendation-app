@@ -31,7 +31,6 @@ searchForm.addEventListener('submit', async (e) => {
     if (data.numFound > 0) {
         data.docs.forEach(book => {
             const title = book.title_suggest || '';
-            const author = book.author_name ? book.author_name[0] : '';
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
 
             const bookElement = document.createElement('div');
@@ -70,7 +69,6 @@ async function loadFictionBooks(){
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
-            const author = book.authors[0].name || '';
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
 
             const bookElement = document.createElement('div');
@@ -100,7 +98,6 @@ async function loadFashionBooks(){
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
-            const author = book.authors[0].name || '';
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
 
             const bookElement = document.createElement('div');
@@ -131,7 +128,6 @@ async function loadFashionBooks(){
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
-        const author = book.authors[0].name || '';
         const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
   
         const bookElement = document.createElement('div');
@@ -161,7 +157,6 @@ async function loadFashionBooks(){
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
-        const author = book.authors[0].name || '';
         const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
   
         const bookElement = document.createElement('div');
@@ -192,15 +187,28 @@ async function loadFashionBooks(){
     if (data.work_count > 0) {
       data.works.forEach(book => {
         const title = book.title || '';
-        const author = book.authors[0].name || '';
         const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
   
         const bookElement = document.createElement('div');
         bookElement.classList.add('book');
-        bookElement.innerHTML = `
-          <img src="${coverUrl}" alt="${title}">
-          <p>${title}</p>`;
-  
+
+        const img = document.createElement("img"); 
+        img.src = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+        img.alt = title;
+
+        //adding event listener
+        img.addEventListener('click', function() {
+            alert('You clicked the image!');
+            //add pop-up UI
+
+          });
+
+        bookElement.appendChild(img);
+
+        const bookTitle = document.createElement("p"); 
+        bookTitle.textContent = title;
+        bookElement.appendChild(bookTitle);
+
         literatureDiv.appendChild(bookElement);
       });
     } else {
@@ -210,4 +218,4 @@ async function loadFashionBooks(){
     }
   };
 
-  
+ 
