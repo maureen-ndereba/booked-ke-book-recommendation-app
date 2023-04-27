@@ -1,2 +1,2 @@
-# booked-ke-book-recommendation-app
-this is a book recommendation app 
+# books_ke
+A JavaScript project

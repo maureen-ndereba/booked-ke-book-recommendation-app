@@ -1,12 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>booked_KE</title>
+    <title>Booked_KE</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
-<body>
+
+<body id="maincontainer">
     
+    <header class="header">
+
+        <div class="logo">
+            <h1>Booked_KE</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My Library</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="search-form">
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Search for books...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+
+        <div class="bookCategories">
+            <div id="search-div" class="ghost">
+                <h2 class="category-heading">Search Results</h2>
+                <div id="book-list" class="books-container">
+    
+                </div>
+            </div>
+
+            <h2 class="category-heading">Fiction</h2>
+            <div class="books-container" id="fiction-books">
+
+            </div>
+            <h2 class="category-heading">Fashion</h2>
+            <div class="books-container" id="fashion-books">
+
+
+            </div>
+            <h2 class="category-heading">Romance</h2>
+            <div class="books-container" id="romance-books">
+
+
+            </div>
+            <h2 class="category-heading">Humor</h2>
+            <div class="books-container" id="humor-books">
+
+
+            </div>
+            <h2 class="category-heading">Literature</h2>
+            <div class="books-container" id="literature-books">
+
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+    
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My Library</a></li>
+                <li><a href="#">Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <script src="index.js"></script>
 </body>
+
 </html>
+
