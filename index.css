@@ -31,6 +31,7 @@ nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
 .logo {
     flex: 1;
 }
@@ -69,11 +70,11 @@ button {
 
 /* Style the container for the list of books */
 .books-container {
-    display: flex; 
-    overflow-x: scroll; 
-    padding: 10px; 
-  }
-  
+    display: flex;
+    overflow-x: scroll;
+    padding: 10px;
+}
+
 html {
     overflow: scroll;
     overflow-x: hidden;
@@ -81,62 +82,63 @@ html {
 
 /* Remove scrollbar space */
 ::-webkit-scrollbar {
-    width: 0;  
-    background: transparent;  
+    width: 0;
+    background: transparent;
 }
 
 
 
-  /* Style each individual book category */
-  .book {
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    margin-right: 20px; 
-    width: 30%; 
-  }
-  
-  /* Style the book image */
-  .book img {
-    width: 120px; 
-    height: 200px; 
-  }
-  
-  /* Style the book title */
-  .book p {
-    margin-top: 10px; 
-    font-size: 12px; 
-    text-align: center; 
-  }
+/* Style each individual book category */
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+    width: 30%;
+}
 
-  .grid-container {
-    display: flex; 
-    overflow-x: scroll; 
-    padding: 10px; 
+/* Style the book image */
+.book img {
+    width: 120px;
+    height: 200px;
+}
+
+/* Style the book title */
+.book p {
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.grid-container {
+    display: flex;
+    overflow-x: scroll;
+    padding: 10px;
     flex-direction: row;
-  }
+}
 
- /*Disappearing the Search Results */
-  .ghost {
+/*Disappearing the Search Results */
+.ghost {
     visibility: collapse;
-  }
+}
 
-  .un-ghost {
+.un-ghost {
     visibility: visible;
-  }
+}
 
-  .search-form {
+.search-form {
     align-self: center;
     width: 100%;
-  }
+}
 
-   /*Footer*/
-  footer {
+/*Footer*/
+footer {
     background-color: #232F3E;
     color: #fff;
     padding: 20px;
     align-content: center;
 }
+
 footer nav ul {
     margin: 0;
     padding: 50px;
@@ -161,4 +163,4 @@ footer nav ul li {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
+}

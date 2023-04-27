@@ -58,9 +58,9 @@ window.onload = function () {
     loadRomanceBooks();
     loadHumorBooks();
     loadLiteratureBooks();
-  };
- 
-async function loadFictionBooks(){
+};
+
+async function loadFictionBooks() {
 
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fiction.json?ebooks=false&details=true&limit=20`;
@@ -89,7 +89,7 @@ async function loadFictionBooks(){
     }
 };
 
-async function loadFashionBooks(){
+async function loadFashionBooks() {
 
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fashion.json?ebooks=false&details=true&limit=20`;
@@ -119,150 +119,150 @@ async function loadFashionBooks(){
 };
 
 
-  
-  async function loadRomanceBooks() {
+
+async function loadRomanceBooks() {
     // Call Opening Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/romance.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
-  
+
     // Display search results
     if (data.work_count > 0) {
-      data.works.forEach(book => {
-        const title = book.title || '';
-        const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-  
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
-        bookElement.innerHTML = `
+        data.works.forEach(book => {
+            const title = book.title || '';
+            const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+
+            const bookElement = document.createElement('div');
+            bookElement.classList.add('book');
+            bookElement.innerHTML = `
           <img src="${coverUrl}" alt="${title}">
           <p>${title}</p>
         `;
-  
-        romanceDiv.appendChild(bookElement);
-      });
-    } else {
-      const noResultsElement = document.createElement('p');
-      noResultsElement.textContent = 'No romance books found for now. Check later.';
-      romanceDiv.appendChild(noResultsElement);
-    }
-  };
-  
 
-  async function loadHumorBooks() {
+            romanceDiv.appendChild(bookElement);
+        });
+    } else {
+        const noResultsElement = document.createElement('p');
+        noResultsElement.textContent = 'No romance books found for now. Check later.';
+        romanceDiv.appendChild(noResultsElement);
+    }
+};
+
+
+async function loadHumorBooks() {
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/humor.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
-  
+
     // Display search results
     if (data.work_count > 0) {
-      data.works.forEach(book => {
-        const title = book.title || '';
-        const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-  
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
-        bookElement.innerHTML = `
+        data.works.forEach(book => {
+            const title = book.title || '';
+            const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+
+            const bookElement = document.createElement('div');
+            bookElement.classList.add('book');
+            bookElement.innerHTML = `
           <img src="${coverUrl}" alt="${title}">
           <p>${title}</p>
         `;
-  
-        humorDiv.appendChild(bookElement);
-      });
+
+            humorDiv.appendChild(bookElement);
+        });
     } else {
-      const noResultsElement = document.createElement('p');
-      noResultsElement.textContent = 'No humor books found for now. Check later.';
-      humorDiv.appendChild(noResultsElement);
+        const noResultsElement = document.createElement('p');
+        noResultsElement.textContent = 'No humor books found for now. Check later.';
+        humorDiv.appendChild(noResultsElement);
     }
-  };
+};
 
 
 
-  async function loadLiteratureBooks() {
+async function loadLiteratureBooks() {
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/literature.json?ebooks=false&details=true&limit=20`;
     const response = await fetch(apiUrl);
     const data = await response.json();
-  
+
     // Display search results
     if (data.work_count > 0) {
-      data.works.forEach(book => {
-        const title = book.title || '';
-        const author = book.author_name ? book.author_name[0] : '';  
-        const publishedYear = book.first_publish_year;
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
+        data.works.forEach(book => {
+            const title = book.title || '';
+            const author = book.author_name ? book.author_name[0] : '';
+            const publishedYear = book.first_publish_year;
+            const bookElement = document.createElement('div');
+            bookElement.classList.add('book');
 
-        const img = document.createElement("img"); 
-        img.src = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-        img.alt = title;
+            const img = document.createElement("img");
+            img.src = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+            img.alt = title;
 
-        //add event listener
-        img.addEventListener('click', function() {
-            //add pop-up UI
-            showBookDetails(title, author, publishedYear, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
-          });
+            //add event listener
+            img.addEventListener('click', function () {
+                //add pop-up UI
+                showBookDetails(title, author, publishedYear, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
+            });
 
-        bookElement.appendChild(img);
+            bookElement.appendChild(img);
 
-        const bookTitle = document.createElement("p"); 
-        bookTitle.textContent = title;
-        bookElement.appendChild(bookTitle);
+            const bookTitle = document.createElement("p");
+            bookTitle.textContent = title;
+            bookElement.appendChild(bookTitle);
 
-        literatureDiv.appendChild(bookElement);
-      });
+            literatureDiv.appendChild(bookElement);
+        });
     } else {
-      const noResultsElement = document.createElement('p');
-      noResultsElement.textContent = 'No literature books found for now. Check later.';
-      literatureDiv.appendChild(noResultsElement);
+        const noResultsElement = document.createElement('p');
+        noResultsElement.textContent = 'No literature books found for now. Check later.';
+        literatureDiv.appendChild(noResultsElement);
     }
-  };
+};
 
- 
-  function showBookDetails(title, author, publishedYear, imageUrl) {
+
+function showBookDetails(title, author, publishedYear, imageUrl) {
     // Create the pop-up container
 
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popup-container");
-  
+
     // Create the content div to hold the book details and image
     const content = document.createElement("div");
     content.classList.add("content");
-  
+
     // Create the book title element
     const bookTitle = document.createElement("h3");
     bookTitle.innerText = title;
-  
+
     // Create the book author element
     const bookAuthor = document.createElement("p");
     bookAuthor.innerText = `Author: ${author}`;
-  
+
     // Create the book published year element
     const bookPublishedYear = document.createElement("p");
     bookPublishedYear.innerText = `Published Year: ${publishedYear}`;
-  
+
     // Create the book image element
     const bookImage = document.createElement("img");
     bookImage.src = imageUrl;
-  
+
     // Append the book details and image elements to the content div
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
     content.appendChild(bookPublishedYear);
     content.appendChild(bookImage);
-  
+
     // Create the cancel button
     const cancelButton = document.createElement("button");
     cancelButton.innerText = "Cancel";
     cancelButton.addEventListener("click", () => {
-      popupContainer.remove();
+        popupContainer.remove();
     });
-  
+
     // Append the content div and cancel button to the pop-up container
     popupContainer.appendChild(content);
     popupContainer.appendChild(cancelButton);
-  
+
     // Append the pop-up container to the document body
     mainBody.appendChild(popupContainer);
-  }
+}
