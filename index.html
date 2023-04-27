@@ -9,18 +9,34 @@
 <body>
 
     <header class="header">
-
         <div class="logo">
-            <h1>Booked_KE</h1>
+            <img src="./logo.png" alt="Book_d Logo">
+        </div>
+        <div class="search">
+            <form>
+                <input type="text" id="search-input" placeholder="I'm looking for...">
+                <button type="submit">Search</button>
+            </form>
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="#">Categories <i class="fas fa-angle-down"></i></a>
+                    <ul class="dropdown">
+                        <li><a href="#">Fiction</a></li>
+                        <li><a href="#">Non-Fiction</a></li>
+                        <li><a href="#">Science Fiction</a></li>
+                        <li><a href="#">Fantasy</a></li>
+                        <li><a href="#">Romance</a></li>
+                    </ul>
+                </li>
                 <li><a href="#">My Library</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#"><i class="fas fa-user"></i></a></li>
             </ul>
         </nav>
     </header>
+    
     <main class="container" id="maincontainer">
         <div class="search-form">
             <form id="search-form">
