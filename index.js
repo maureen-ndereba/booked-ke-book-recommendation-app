@@ -209,3 +209,5 @@ async function loadFashionBooks(){
       literatureDiv.appendChild(noResultsElement);
     }
   };
+
+  

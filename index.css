@@ -136,3 +136,16 @@ html {
     padding: 20px;
     align-content: center;
 }
+footer nav ul {
+    margin: 0;
+    padding: 50px;
+    list-style-type: none;
+}
+
+footer nav ul li {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
