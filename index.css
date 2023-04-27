@@ -6,7 +6,7 @@ body {
 
 header {
     background-color: #62ba9e;
-    color: #fff;
+    color: rgb(24, 37, 17);
     padding: 40px;
 }
 
@@ -28,7 +28,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: rgb(24, 37, 17);
     text-decoration: none;
 }
 
@@ -43,6 +43,7 @@ nav {
 
 nav ul {
     margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -134,7 +135,7 @@ html {
 /*Footer*/
 footer {
     background-color: #62ba9e;
-    color: #fff;
+    color:  rgb(24, 37, 17);
     padding: 20px;
     align-content: center;
 }
@@ -148,7 +149,7 @@ footer nav ul {
 footer nav ul li {
     display: inline-flex;
     align-items: center;
-    margin-left: 100px;
+    margin-left: 150px;
     margin-right: 100px;
 }
 
