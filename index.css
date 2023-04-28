@@ -1,3 +1,4 @@
+/*Nav Bar*/
 *{
     padding: 0;
     margin: 0;
@@ -7,11 +8,87 @@
 }
 
 body{
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Crimson Text', serif;
 }
 
 nav{
-    background: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    height: 100px;
+    width: 100%;
+}
+.menu-container{
+    flex-grow: 1;
+}
+.menu{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+.logo-container{
+    flex-grow: 1;
+    text-align: center;
+}
+.logo img{
+    height: 120px;
+    margin-right: 90px;
+}
+.search-container {
+    flex-grow: 1;
+    text-align: right;
+    margin-right: 20px;
+}
+.search form {
+    display: flex;
+    align-items: center;
+  }
+  
+#search-input {
+    margin-right: 20px;
+    margin-bottom: 40px;
+    padding: 7px 13px;
+    font-size: 14px;
+    border: none;
+    margin-bottom: 40px;
+}
+  
+.search button {
+    padding: 7px 13px;
+    font-size: 14px;
+    background-color: #fff;
+    border: none;
+    margin-top: 40px;
+ }
+
+
+nav ul{
+    justify-content: flex-start;
+    margin-left:  20px; 
+    border: 1px #C394FF;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 17px;
+    background: #C394FF;
+    padding: 10px;
+
+}
+
+a.active,a:hover{
+    background: #C394FF;
+    transition: .5s;
 }
 
 main {
@@ -36,7 +113,7 @@ button {
 }
 
 
-/* Style the container for the list of books */
+
 .books-container {
     display: flex;
     overflow-x: scroll;
@@ -56,7 +133,7 @@ html {
 
 
 
-/* Style each individual book category */
+
 .book {
     display: flex;
     flex-direction: column;
@@ -65,13 +142,13 @@ html {
     width: 30%;
 }
 
-/* Style the book image */
+
 .book img {
     width: 120px;
     height: 200px;
 }
 
-/* Style the book title */
+
 .book p {
     margin-top: 10px;
     font-size: 12px;
@@ -85,7 +162,7 @@ html {
     flex-direction: row;
 }
 
-/*Disappearing the Search Results */
+/*Clearing Search Results */
 .ghost {
     visibility: collapse;
 }
