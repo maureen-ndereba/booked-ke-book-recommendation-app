@@ -10,6 +10,8 @@ const literatureDiv = document.getElementById('literature-books');
 const searchDiv = document.getElementById('search-div');
 const mainBody = document.getElementById('maincontainer');
 const loadingIcon = document.getElementById('loading-div');
+const form = document.querySelector('.subscription-form');
+const input = document.querySelector('input[type="email"]');
 
 
 
@@ -292,3 +294,11 @@ function showBookDetails(title, author, publishedYear, imageUrl) {
     // Append the pop-up container to the document body
     mainBody.appendChild(popupContainer);
 }
+
+//Event Listener for Email Submission
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    const email = input.value;
+    alert(`Welcome to the fam, ${email}!`);
+    form.reset(); 
+  });
