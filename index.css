@@ -30,6 +30,7 @@ nav{
 .logo-container{
     flex-grow: 1;
     text-align: center;
+    align-content: center;
 }
 .logo img{
     height: 100px;
@@ -62,21 +63,21 @@ nav{
 }
 
 
-nav ul{
+header nav ul{
     justify-content: flex-start;
     margin-left:  20px; 
     border: 1px #C394FF;
 }
 
 
-nav ul li{
+header nav ul li{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
 }
 
 
-nav ul li a{
+header nav ul li a{
     color: white;
     font-size: 14px;
     padding: 3px 13px;
@@ -252,9 +253,8 @@ html {
 }
 
 /*Footer*/
-footer {
+footer nav {
     background-color: #C394FF;
-    color:  rgb(24, 37, 17);
     align-content: center;
 }
 
@@ -262,13 +262,18 @@ footer nav ul {
     margin: 0;
     padding: 10px;
     list-style-type: none;
+    
 }
 
 footer nav ul li {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    margin-left: 150px;
-    margin-right: 100px;
+}
+
+footer nav ul li a{
+    color: rgb(84, 79, 79);
+    font-size: 14px;
 }
 
 #popup-container {
@@ -296,7 +301,7 @@ footer nav ul li {
     animation: 1.5s linear infinite spinner;
     animation-play-state: inherit;
     border: solid 5px #cfd0d1;
-    border-bottom-color: #1c87c9;
+    border-bottom-color: #7000FF;
     border-radius: 50%;
     content: "";
     height: 40px;
