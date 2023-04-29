@@ -32,86 +32,75 @@ nav{
     text-align: center;
 }
 .logo img{
-    height: 120px;
+    height: 100px;
     margin-right: 90px;
 }
 .search-container {
-    flex-grow: 1;
+    flex-grow: 3;
     text-align: right;
     margin-right: 20px;
+    
 }
-.search form {
+.search-form {
     display: flex;
     align-items: center;
+    
   }
+
   
-#search-input {
+#search-bar {
     margin-right: 20px;
     margin-bottom: 40px;
+    margin-top: 60px;
     padding: 7px 13px;
     font-size: 14px;
-    border: none;
-    margin-bottom: 40px;
+    border-radius: 12px;
+    border-color: #ffffff;
+    background: rgba(195, 148, 255, 0.2);
+    width: 80%;
+    
 }
-  
-.search button {
-    padding: 7px 13px;
-    font-size: 14px;
-    background-color: #fff;
-    border: none;
-    margin-top: 40px;
- }
 
 
 nav ul{
     justify-content: flex-start;
     margin-left:  20px; 
     border: 1px #C394FF;
-    border-radius: 5px;
-    padding: 5px;
-
 }
+
+
 nav ul li{
     display: inline-block;
     line-height: 80px;
     margin: 0 5px;
 }
+
+
 nav ul li a{
     color: white;
-    font-size: 17px;
-    padding: 7px 13px;
-    border-radius: 17px;
+    font-size: 14px;
+    padding: 3px 13px;
+    border-radius: 9px;
     background: #C394FF;
-    padding: 10px;
-
 }
 
 a.active,a:hover{
-    background: #C394FF;
+    background: #2f1a4a;
     transition: .5s;
 }
 
 main {
     padding: 20px;
 }
+body {
+    background-image: linear-gradient(rgba(137, 0, 242, 0.38), rgba(137, 0, 242, 0.20)), url('./background.jpg');
+    background-size: cover;
+  }
+  
 
 form {
     margin-bottom: 20px;
 }
-
-#search-input {
-    padding: 10px;
-    width: 85%;
-    align-self: center;
-    margin-left: 50px;
-    margin-top: 80px;
-}
-
-button {
-    padding: 10px;
-    cursor: pointer;
-}
-
 
 
 .books-container {
@@ -144,8 +133,8 @@ html {
 
 
 .book img {
-    width: 120px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
 }
 
 
@@ -209,3 +198,45 @@ footer nav ul li {
     align-items: center;
     justify-content: center;
 }
+
+@keyframes spinner {
+    0% {
+      transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+    100% {
+      transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+  }
+  .spin::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 5px #cfd0d1;
+    border-bottom-color: #1c87c9;
+    border-radius: 50%;
+    content: "";
+    height: 40px;
+    width: 40px;
+    top: 10%;
+    left: 10%;
+    transform: translate3d(-50%, -50%, 0);
+    will-change: transform;
+    display: flex;
+  }
+
+
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 9999;
+}
+
+
+
+  

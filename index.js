@@ -1,6 +1,6 @@
 //Define DOM elements
 const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
+const searchInput = document.getElementById('search-bar');
 const bookList = document.getElementById('book-list');
 const fictionDiv = document.getElementById('fiction-books');
 const fashionDiv = document.getElementById('fashion-books');
@@ -9,14 +9,25 @@ const humorDiv = document.getElementById('humor-books');
 const literatureDiv = document.getElementById('literature-books');
 const searchDiv = document.getElementById('search-div');
 const mainBody = document.getElementById('maincontainer');
+const loadingIcon = document.getElementById('loading-div');
 
 
 
+// Function to show loading icon
+function showLoadingIcon() {
+    loadingIcon.style.display = 'flex';
+  }
+  
+  // Function to hide loading icon
+  function hideLoadingIcon() {
+    loadingIcon.style.display = 'none';
+  }
 
-
+  
 // Event listener for form submission
-searchForm.addEventListener('submit', async (e) => {
+searchInput.addEventListener('keyup', async (e) => {
     e.preventDefault();
+    if (e.key === 'Enter') {
 
     // Get user input from search input field
     const searchTerm = searchInput.value;
@@ -26,8 +37,7 @@ searchForm.addEventListener('submit', async (e) => {
 
     // Call Open Library API with search term
     const apiUrl = `https://openlibrary.org/search.json?q=${searchTerm}`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
 
     // Display search results
     if (data.numFound > 0) {
@@ -50,7 +60,21 @@ searchForm.addEventListener('submit', async (e) => {
         noResultsElement.textContent = 'No results found.';
         bookList.appendChild(noResultsElement);
     }
+}
 });
+
+async function fetchData(apiUrl) {
+    showLoadingIcon(); // Show loading icon before making API call
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      hideLoadingIcon(); // Hide loading icon after data is fetched
+    }
+  }
 
 window.onload = function () {
     loadFictionBooks();
@@ -64,8 +88,8 @@ async function loadFictionBooks() {
 
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fiction.json?ebooks=false&details=true&limit=20`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
+
 
     // Display search results
     if (data.work_count > 0) {
@@ -93,8 +117,8 @@ async function loadFashionBooks() {
 
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/fashion.json?ebooks=false&details=true&limit=20`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
+
 
     // Display search results
     if (data.work_count > 0) {
@@ -123,8 +147,8 @@ async function loadFashionBooks() {
 async function loadRomanceBooks() {
     // Call Opening Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/romance.json?ebooks=false&details=true&limit=20`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
+
 
     // Display search results
     if (data.work_count > 0) {
@@ -152,8 +176,8 @@ async function loadRomanceBooks() {
 async function loadHumorBooks() {
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/humor.json?ebooks=false&details=true&limit=20`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
+
 
     // Display search results
     if (data.work_count > 0) {
@@ -182,8 +206,8 @@ async function loadHumorBooks() {
 async function loadLiteratureBooks() {
     // Call Open Library API with subject term and additional query parameters 
     const apiUrl = `https://openlibrary.org/subjects/literature.json?ebooks=false&details=true&limit=20`;
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    const data = await fetchData(apiUrl);
+
 
     // Display search results
     if (data.work_count > 0) {
