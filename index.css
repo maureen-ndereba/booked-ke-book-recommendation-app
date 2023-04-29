@@ -93,7 +93,7 @@ main {
     padding: 20px;
 }
 body {
-    background-image: linear-gradient(rgba(137, 0, 242, 0.38), rgba(137, 0, 242, 0.20)), url('./background.jpg');
+    background-image: linear-gradient(rgba(177, 101, 234, 0.38), rgba(137, 0, 242, 0.20)), url('./background.jpg');
     background-size: cover;
   }
   
@@ -120,8 +120,81 @@ html {
     background: transparent;
 }
 
+.container {
+    position: relative;
+  }
+  
+  .image-container {
+    position: relative;
+    height: 318px;
+    background-image: url('book-club-meeting.png');
+    background-size:1436px;
+    background-position: center;
+  }
+  
+  .image-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    width: 50%;
+    color: black;
+    text-align: right;
+    align-content: right;
+    
+  }
+  
+  .image-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  .image-text p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    width: 400px;
 
+    
 
+}
+  
+  .subscription-form input {
+    padding: 10px;
+    border: none;
+    margin-right: 10px;
+    padding: 7px 13px;
+    font-size: 14px;
+    border-radius: 12px;
+    border-color: #ffffff;
+    background: rgba(195, 148, 255, 0.2);
+    width: 50%;
+  }
+  
+  .subscription-form button {
+    padding: 10px 20px;
+    background-color: #fff;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    padding: 7px 13px;
+    font-size: 14px;
+    border-radius: 12px;
+    border-color: #ffffff;
+    background: rgba(195, 148, 255, 0.2);
+  }
+  
+
+  h2{
+    font-family: 'Crimson Text', serif;
+    color: #7000FF;
+    font-size: 18px;
+    padding: 7px 13px;
+    border-radius: 12px;
+    background: white;
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
 
 .book {
     display: flex;

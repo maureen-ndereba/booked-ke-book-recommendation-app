@@ -13,6 +13,8 @@ const loadingIcon = document.getElementById('loading-div');
 
 
 
+
+
 // Function to show loading icon
 function showLoadingIcon() {
     loadingIcon.style.display = 'flex';
