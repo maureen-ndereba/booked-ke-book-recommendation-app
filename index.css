@@ -131,6 +131,8 @@ html {
     background-image: url('book-club-meeting.png');
     background-size:1436px;
     background-position: center;
+    border-radius: 30px;
+    
   }
   
   .image-text {
