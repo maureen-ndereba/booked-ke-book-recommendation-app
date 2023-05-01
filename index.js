@@ -7,78 +7,83 @@ const fashionDiv = document.getElementById('fashion-books');
 const romanceDiv = document.getElementById('romance-books');
 const humorDiv = document.getElementById('humor-books');
 const literatureDiv = document.getElementById('literature-books');
-const searchDiv = document.getElementById('search-div');
+const searchH2 = document.getElementById('search-h2');
 const mainBody = document.getElementById('maincontainer');
 const loadingIcon = document.getElementById('loading-div');
-const form = document.querySelector('.subscription-form');
+const emailInput = document.getElementById('email-input');
+const emailButton = document.getElementById('email-button');
+const popupContainer = document.getElementById('popup-container');
+const synopsis = document.getElementById('synopsis');
+const closeBtn = document.getElementById('close-btn');
+
+
+
 const input = document.querySelector('input[type="email"]');
-
-
-
 
 
 // Function to show loading icon
 function showLoadingIcon() {
     loadingIcon.style.display = 'flex';
-  }
-  
-  // Function to hide loading icon
-  function hideLoadingIcon() {
-    loadingIcon.style.display = 'none';
-  }
+}
 
-  
+// Function to hide loading icon
+function hideLoadingIcon() {
+    loadingIcon.style.display = 'none';
+}
+
+
 // Event listener for form submission
 searchInput.addEventListener('keyup', async (e) => {
     e.preventDefault();
     if (e.key === 'Enter') {
 
-    // Get user input from search input field
-    const searchTerm = searchInput.value;
+        // Get user input from search input field
+        const searchTerm = searchInput.value;
 
-    // Clear previous search results
-    bookList.innerHTML = '';
+        // Clear previous search results
+        bookList.innerHTML = '';
 
-    // Call Open Library API with search term
-    const apiUrl = `https://openlibrary.org/search.json?q=${searchTerm}`;
-    const data = await fetchData(apiUrl);
+        // Call Open Library API with search term
+        const apiUrl = `https://openlibrary.org/search.json?q=${searchTerm}`;
+        const data = await fetchData(apiUrl);
 
-    // Display search results
-    if (data.numFound > 0) {
-        data.docs.forEach(book => {
-            const title = book.title_suggest || '';
-            const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+        // Display search results
+        if (data.numFound > 0) {
+            data.docs.forEach(book => {
+                const title = book.title_suggest || '';
+                const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
 
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
-            bookElement.innerHTML = `
+                const bookElement = document.createElement('div');
+                bookElement.classList.add('book');
+                bookElement.innerHTML = `
                 <img src="${coverUrl}" alt="${title}">
                 <p>${title}</p>`;
 
-            bookList.appendChild(bookElement);
-        });
+                bookList.appendChild(bookElement);
+            });
 
-        searchDiv.classList.add('un-ghost')
-    } else {
-        const noResultsElement = document.createElement('p');
-        noResultsElement.textContent = 'No results found.';
-        bookList.appendChild(noResultsElement);
+            bookList.classList.add('un-ghost')
+            searchH2.classList.add('un-ghost')
+        } else {
+            const noResultsElement = document.createElement('p');
+            noResultsElement.textContent = 'No results found.';
+            bookList.appendChild(noResultsElement);
+        }
     }
-}
 });
 
 async function fetchData(apiUrl) {
     showLoadingIcon(); // Show loading icon before making API call
     try {
-      const response = await fetch(apiUrl);
-      const data = await response.json();
-      return data;
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data;
     } catch (error) {
-      console.error(error);
+        console.error(error);
     } finally {
-      hideLoadingIcon(); // Hide loading icon after data is fetched
+        hideLoadingIcon(); // Hide loading icon after data is fetched
     }
-  }
+}
 
 window.onload = function () {
     loadFictionBooks();
@@ -229,7 +234,7 @@ async function loadLiteratureBooks() {
             //add event listener
             img.addEventListener('click', function () {
                 //add pop-up UI
-                showBookDetails(title, author, publishedYear, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
+                showBookDetails(title, author, publishedYear,description, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
             });
 
             bookElement.appendChild(img);
@@ -248,7 +253,7 @@ async function loadLiteratureBooks() {
 };
 
 
-function showBookDetails(title, author, publishedYear, imageUrl) {
+function showBookDetails(title, author, publishedYear,description, imageUrl) {
     // Create the pop-up container
 
     const popupContainer = document.createElement("div");
@@ -274,6 +279,8 @@ function showBookDetails(title, author, publishedYear, imageUrl) {
     const bookImage = document.createElement("img");
     bookImage.src = imageUrl;
 
+    //Create 
+
     // Append the book details and image elements to the content div
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
@@ -295,10 +302,35 @@ function showBookDetails(title, author, publishedYear, imageUrl) {
     mainBody.appendChild(popupContainer);
 }
 
+
+
 //Event Listener for Email Submission
-form.addEventListener('submit', function(event) {
-    event.preventDefault(); 
-    const email = input.value;
-    alert(`Welcome to the fam, ${email}!`);
-    form.reset(); 
-  });
+emailButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    submitEmail();
+});
+
+
+emailInput.addEventListener('keyup', async (e) => {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+        submitEmail();
+    }
+
+});
+
+function submitEmail() {
+    const email = emailInput.value;
+
+    //Validate input
+    const regex = /\S+@\S+\.\S+/;
+    if (!regex.test(email)) {
+        // email is not valid
+        alert("Please enter a valid email address.");
+    } else {
+        // email is valid
+        alert(`Welcome to the fam, ${email}!`);
+        emailInput.value = '';
+    }
+
+}

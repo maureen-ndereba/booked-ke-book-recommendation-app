@@ -97,7 +97,6 @@ header nav ul li{
 header nav ul li a{
     text-decoration: none;
     color: white;
-    font-family: ;
     font-size: 14px;
     padding: 3px 13px;
     border-radius: 9px;
@@ -113,7 +112,7 @@ main {
     padding: 20px;
 }
 body {
-    background-image: linear-gradient(rgba(177, 101, 234, 0.38), rgba(137, 0, 242, 0.20)), url('./background.jpg');
+    background-image: linear-gradient(rgba(177, 101, 234, 0.38), rgba(137, 0, 242, 0.20));
     background-size: cover;
   }
   
@@ -185,11 +184,6 @@ html {
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
-
-    
-
-    
-
 }
   
   .subscription-form input {
@@ -251,7 +245,12 @@ html {
     padding-left: 8px;
     padding-right: 8px;    
     border-radius: 8px;
-    background: linear-gradient(to right, rgb(122, 62, 168), rgba(137, 0, 242, 0.20))
+    background: #C394FF;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 130px;
 }
 
 .grid-container {
@@ -268,6 +267,7 @@ html {
 
 .un-ghost {
     visibility: visible;
+    margin-top: 50px;
 }
 
 .search-form {
@@ -307,18 +307,33 @@ footer nav ul li a{
     align-content: center;
 }
 
-#popup-container {
+.popup-container {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: 40%;
+    height: 60%;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    backdrop-filter: blur(3px); 
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 12px;
+    
+  }
+  
+  .popup-content {
+    z-index: 10000; 
+    background-color: #fff;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
 @keyframes spinner {
     0% {

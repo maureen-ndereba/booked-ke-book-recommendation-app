@@ -4,7 +4,6 @@
 <head>
     <title>Booked_KE</title>
     <link rel="stylesheet" type="text/css" href="./index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-kxM+8dr+9bLzfDf3J3qtnDwTQ2hrT+NifkRctfmoAPo+nOe38lX9YgF0hQTb3TtnBnbQ2TddrNDrLk0bjrDz8Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Gotu:regular" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300italic,regular,italic,500,500italic,600,600italic,700,700italic" rel="stylesheet" />
@@ -30,9 +29,7 @@
             </div>
             <div class="search-container">
                 <div>
-                    <form id="search-form">
                         <input type="text" id="search-bar" placeholder="I'm looking for...">
-                    </form>
                 </div>
             </div>
         </nav>
@@ -51,19 +48,18 @@
                 discover 
                 new worlds between the pages! <br>
                 Click below for some amazing reads together!</p>
-              <form class="subscription-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Join</button>
-              </form>
+              <div class="subscription-form">
+                <input id="email-input" type="email" placeholder="Enter your email" required>
+                <button id="email-button">Join</button>
+              </div>
             </div>
           </div>
 
         <div class="bookCategories">
-            <div id="search-div" class="ghost">
-                <h2 class="category-heading">Search Results</h2>
-                <div id="book-list" class="books-container">
+            
+            <h2 id="search-h2" class="category-heading ghost">Search Results</h2>
+            <div id="book-list" class="books-container ghost">
 
-                </div>
             </div>
 
             <h2 class="category-heading">Fiction</h2>
