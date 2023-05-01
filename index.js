@@ -69,7 +69,7 @@ searchInput.addEventListener('keyup', async (e) => {
     }
 });
 
-function createBooksDisplayDiv(title, author, publishedYear, coverUrl){
+function createBooksDisplayDiv(title, author, publishedYear, coverUrl) {
     const bookElement = document.createElement('div');
     bookElement.classList.add('book');
 
@@ -244,7 +244,7 @@ function showBookDetails(title, author, publishedYear, imageUrl) {
     //remove pop up is any is displayed
     console.log(author);
     const activePopupDiv = document.getElementById('popup-div');
-    if (mainBody.contains(activePopupDiv)){
+    if (mainBody.contains(activePopupDiv)) {
         activePopupDiv.remove();
     }
 
