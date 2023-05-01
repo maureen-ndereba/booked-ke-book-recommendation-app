@@ -12,9 +12,6 @@ const mainBody = document.getElementById('maincontainer');
 const loadingIcon = document.getElementById('loading-div');
 const emailInput = document.getElementById('email-input');
 const emailButton = document.getElementById('email-button');
-const popupContainer = document.getElementById('popup-container');
-const synopsis = document.getElementById('synopsis');
-const closeBtn = document.getElementById('close-btn');
 
 
 
@@ -50,7 +47,7 @@ searchInput.addEventListener('keyup', async (e) => {
         // Display search results
         if (data.numFound > 0) {
             data.docs.forEach(book => {
-                const title = book.title_suggest || '';
+                const title = book.title || '';
                 const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
 
                 const bookElement = document.createElement('div');
@@ -71,6 +68,28 @@ searchInput.addEventListener('keyup', async (e) => {
         }
     }
 });
+
+function createBooksDisplayDiv(title, author, publishedYear, coverUrl){
+    const bookElement = document.createElement('div');
+    bookElement.classList.add('book');
+
+    const img = document.createElement("img");
+    img.src = coverUrl;
+    img.alt = title;
+
+    //add event listener
+    img.addEventListener('click', function () {
+        //add pop-up UI
+        showBookDetails(title, author, publishedYear, coverUrl)
+    });
+
+    bookElement.appendChild(img);
+
+    const bookTitle = document.createElement("p");
+    bookTitle.textContent = title;
+    bookElement.appendChild(bookTitle);
+    return bookElement;
+}
 
 async function fetchData(apiUrl) {
     showLoadingIcon(); // Show loading icon before making API call
@@ -104,15 +123,10 @@ async function loadFictionBooks() {
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
+            const author = book.authors[0].name || '';
+            const publishedYear = book.first_publish_year;
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
-            bookElement.innerHTML = `
-                <img src="${coverUrl}" alt="${title}">
-                <p>${title}</p>
-            `;
-
+            const bookElement = createBooksDisplayDiv(title, author, publishedYear, coverUrl);
             fictionDiv.appendChild(bookElement);
         });
     } else {
@@ -133,14 +147,10 @@ async function loadFashionBooks() {
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
+            const author = book.authors[0].name || '';
+            const publishedYear = book.first_publish_year;
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
-            bookElement.innerHTML = `
-                <img src="${coverUrl}" alt="${title}">
-                <p>${title}</p>
-            `;
+            const bookElement = createBooksDisplayDiv(title, author, publishedYear, coverUrl);
 
             fashionDiv.appendChild(bookElement);
         });
@@ -163,14 +173,10 @@ async function loadRomanceBooks() {
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
+            const author = book.authors[0].name || '';
+            const publishedYear = book.first_publish_year;
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
-            bookElement.innerHTML = `
-          <img src="${coverUrl}" alt="${title}">
-          <p>${title}</p>
-        `;
+            const bookElement = createBooksDisplayDiv(title, author, publishedYear, coverUrl);
 
             romanceDiv.appendChild(bookElement);
         });
@@ -192,14 +198,11 @@ async function loadHumorBooks() {
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
+            const author = book.authors[0].name || '';
+            const publishedYear = book.first_publish_year;
             const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+            const bookElement = createBooksDisplayDiv(title, author, publishedYear, coverUrl);
 
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
-            bookElement.innerHTML = `
-          <img src="${coverUrl}" alt="${title}">
-          <p>${title}</p>
-        `;
 
             humorDiv.appendChild(bookElement);
         });
@@ -222,26 +225,11 @@ async function loadLiteratureBooks() {
     if (data.work_count > 0) {
         data.works.forEach(book => {
             const title = book.title || '';
-            const author = book.author_name ? book.author_name[0] : '';
+            const author = book.authors[0].name || '';
             const publishedYear = book.first_publish_year;
-            const bookElement = document.createElement('div');
-            bookElement.classList.add('book');
+            const coverUrl = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
+            const bookElement = createBooksDisplayDiv(title, author, publishedYear, coverUrl);
 
-            const img = document.createElement("img");
-            img.src = `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`;
-            img.alt = title;
-
-            //add event listener
-            img.addEventListener('click', function () {
-                //add pop-up UI
-                showBookDetails(title, author, publishedYear,description, `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`)
-            });
-
-            bookElement.appendChild(img);
-
-            const bookTitle = document.createElement("p");
-            bookTitle.textContent = title;
-            bookElement.appendChild(bookTitle);
 
             literatureDiv.appendChild(bookElement);
         });
@@ -252,12 +240,18 @@ async function loadLiteratureBooks() {
     }
 };
 
+function showBookDetails(title, author, publishedYear, imageUrl) {
+    //remove pop up is any is displayed
+    console.log(author);
+    const activePopupDiv = document.getElementById('popup-div');
+    if (mainBody.contains(activePopupDiv)){
+        activePopupDiv.remove();
+    }
 
-function showBookDetails(title, author, publishedYear,description, imageUrl) {
     // Create the pop-up container
-
     const popupContainer = document.createElement("div");
     popupContainer.classList.add("popup-container");
+    popupContainer.setAttribute('id', 'popup-div');
 
     // Create the content div to hold the book details and image
     const content = document.createElement("div");
@@ -279,8 +273,6 @@ function showBookDetails(title, author, publishedYear,description, imageUrl) {
     const bookImage = document.createElement("img");
     bookImage.src = imageUrl;
 
-    //Create 
-
     // Append the book details and image elements to the content div
     content.appendChild(bookTitle);
     content.appendChild(bookAuthor);
@@ -301,8 +293,6 @@ function showBookDetails(title, author, publishedYear,description, imageUrl) {
     // Append the pop-up container to the document body
     mainBody.appendChild(popupContainer);
 }
-
-
 
 //Event Listener for Email Submission
 emailButton.addEventListener('click', function (event) {

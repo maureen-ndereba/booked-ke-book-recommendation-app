@@ -309,30 +309,37 @@ footer nav ul li a{
 
 .popup-container {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 40%;
-    height: 60%;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 500px;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(3px); 
-    background-color: rgb(255, 255, 255, 0.5);
+    background-color: rgba(223, 208, 242, 0.965);
     border-radius: 12px;
+    transform: translate(-250px, -250px);
+    
     
   }
   
   .popup-content {
     z-index: 10000; 
     background-color: #fff;
-    width: 400px;
-    padding: 20px;
+    width: 60%;
+    padding: 5px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .popup-content img {
+    width: 100px; 
+    height: auto; 
   }
 
 @keyframes spinner {
